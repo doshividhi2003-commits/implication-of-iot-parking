@@ -99,25 +99,30 @@ void loop() {
       gateState = -1;
       gate.write(90);
     }
+    
     if (dEntrance >= DIST_THRESHOLD && dExit < DIST_THRESHOLD && slotsAvailable < 3) {
       slotsAvailable += 1;
       gateState = 1;
       gate.write(90);
     }
+    
   } else if (gateState == -1) {
     if (dEntrance >= DIST_THRESHOLD && dExit < DIST_THRESHOLD) {
       gateState = -2;
       gate.write(0);
     }
+    
   } else if (gateState == 1) {
     if (dExit >= DIST_THRESHOLD && dEntrance < DIST_THRESHOLD) {
       gateState = 2;
       gate.write(0);
     }
+    
   } else if (gateState == -2) {
     if (dExit >= DIST_THRESHOLD) {
       gateState = 0;
     }
+    
   } else if (gateState == 2) {
     if (dEntrance >= DIST_THRESHOLD) {
       gateState = 0;
@@ -131,28 +136,44 @@ void loop() {
     lcd.print("Parking left ");
     lcd.print(slotsAvailable);
   }
+  
 
-  if (d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) {
+  if (d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) 
+  {
     lcd.setCursor(0, 1);
     lcd.print("Slot 1 2 3 Free");
     delay(500);
-  } else if ((d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD) ||
-             (d2 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) ||
-             (d3 > DIST_THRESHOLD && d1 > DIST_THRESHOLD)) {
+  } 
+  
+  else if ((d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD) || (d2 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) || (d3 > DIST_THRESHOLD && d1 > DIST_THRESHOLD)) 
+  {
     lcd.setCursor(0, 1);
-    if (d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD)      lcd.print("Slot 1 & 2 Free");
-    else if (d1 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) lcd.print("Slot 1 & 3 Free");
-    else                                                 lcd.print("Slot 2 & 3 Free");
+    if (d1 > DIST_THRESHOLD && d2 > DIST_THRESHOLD)     
+    lcd.print("Slot 1 & 2 Free");
+    
+    else if (d1 > DIST_THRESHOLD && d3 > DIST_THRESHOLD) 
+    lcd.print("Slot 1 & 3 Free");
+    
+    else                                                
+    lcd.print("Slot 2 & 3 Free");
+    
   } else if (d1 < DIST_THRESHOLD && d2 < DIST_THRESHOLD && d3 < DIST_THRESHOLD) {
     lcd.setCursor(0, 1);
     lcd.print("Parking Full   ");
+    
   } else if ((d1 < DIST_THRESHOLD && d2 < DIST_THRESHOLD) ||
              (d2 < DIST_THRESHOLD && d3 < DIST_THRESHOLD) ||
-             (d3 < DIST_THRESHOLD && d1 < DIST_THRESHOLD)) {
+             (d3 < DIST_THRESHOLD && d1 < DIST_THRESHOLD)) 
+             {
     lcd.setCursor(0, 1);
-    if      (d1 > DIST_THRESHOLD) lcd.print("Slot 1 is Free ");
-    else if (d2 > DIST_THRESHOLD) lcd.print("Slot 2 is Free ");
-    else                          lcd.print("Slot 3 is Free ");
+    if (d1 > DIST_THRESHOLD)
+    lcd.print("Slot 1 is Free ");
+    
+    else if (d2 > DIST_THRESHOLD) 
+    lcd.print("Slot 2 is Free ");
+    
+    else 
+    lcd.print("Slot 3 is Free ");
   }
 
   delay(100);

@@ -36,7 +36,8 @@ This project demonstrates how IoT can be applied in smart city infrastructure to
 ---
 
 ## 📸 Circuit Design (Tinkercad)  
-*(Upload your Tinkercad circuit screenshot here so others can see the hardware connections.)*  
+<img width="1456" height="777" alt="image" src="https://github.com/user-attachments/assets/97d8b5eb-c2e2-45e1-9d2d-42c0b9b5d1b1" />
+ 
 
 ---
 
